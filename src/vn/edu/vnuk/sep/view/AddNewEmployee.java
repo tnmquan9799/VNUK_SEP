@@ -1,5 +1,12 @@
 package vn.edu.vnuk.sep.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,14 +21,6 @@ import vn.edu.vnuk.sep.model.CasualWorker;
 import vn.edu.vnuk.sep.model.Lecturer;
 import vn.edu.vnuk.sep.model.Person;
 import vn.edu.vnuk.sep.model.Staff;
-
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.sql.SQLException;
-
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class AddNewEmployee extends JFrame {
@@ -129,9 +128,10 @@ public class AddNewEmployee extends JFrame {
 						
 						try {
 							new StaffDao().create(staff);
-							JOptionPane.showMessageDialog(frame, "Create staff successfully!!!");
+							JOptionPane.showMessageDialog(frame, "ADD STAFF SUCCESSFLLY!");
+							
 						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "Error when creating staff!!!");
+							JOptionPane.showMessageDialog(frame, "ADD STAFF FAIL!");
 							e1.printStackTrace();
 						}
 						break;
@@ -154,9 +154,9 @@ public class AddNewEmployee extends JFrame {
 						
 						try {
 							new LecturerDao().create(lecturer);
-							JOptionPane.showMessageDialog(frame, "Create lecturer successfully!!!");
+							JOptionPane.showMessageDialog(frame, "ADD LECTURER CUSSESFULLY!");
 						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "Error whern creating lecturer!!!");
+							JOptionPane.showMessageDialog(frame, "ADD LECTURER FAIL!");
 							e1.printStackTrace();
 						}
 						break;
@@ -173,9 +173,10 @@ public class AddNewEmployee extends JFrame {
 						
 						try {
 							new CasualWorkerDao().create(casualWorker);
-							JOptionPane.showMessageDialog(frame, "Create casual worker successfully!!!");
+							JOptionPane.showMessageDialog(frame, "ADD CASUAL WORKER SUCCESSFULLY!");
+							
 						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "Error when creating causal worker!!!");
+							JOptionPane.showMessageDialog(frame, "ADD CASUAL WORKER FAIL!");
 							e1.printStackTrace();
 						}
 						break;
@@ -204,9 +205,9 @@ public class AddNewEmployee extends JFrame {
 						
 						try {
 							new StaffDao().update(personId, staff);
-							JOptionPane.showMessageDialog(frame, "Update staff successfully!!!");
+							JOptionPane.showMessageDialog(frame, "UPDATE STAFF SUCCESSFULLY!");
 						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "Error when updating staff!!!");
+							JOptionPane.showMessageDialog(frame, "UPDATE STAFF FAIL!");
 							e1.printStackTrace();
 						}
 						break;
@@ -231,9 +232,9 @@ public class AddNewEmployee extends JFrame {
 						
 						try {
 							new LecturerDao().update(personId, lecturer);
-							JOptionPane.showMessageDialog(frame, "Update lecturer successfully!!!");
+							JOptionPane.showMessageDialog(frame, "UPDATE LECTURER SUCCESSFULLY!");
 						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "Error when updating lecturer!!!");
+							JOptionPane.showMessageDialog(frame, "UPDATE LECTURER FAIL!");
 							e1.printStackTrace();
 						}
 						break;
@@ -252,9 +253,9 @@ public class AddNewEmployee extends JFrame {
 						
 						try {
 							new CasualWorkerDao().update(personId, casualWorker);
-							JOptionPane.showMessageDialog(frame, "Update casual worker successfully!!!");
+							JOptionPane.showMessageDialog(frame, "UPDATE CASUAL WORKER SUCCESSFULLY!");
 						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "Error when updating casual worker!!!");
+							JOptionPane.showMessageDialog(frame, "UPDATE CASUAL WORKER FAIL");
 							e1.printStackTrace();
 						}
 						break;

@@ -69,8 +69,19 @@ public class Application extends JFrame {
 	 * Create the frame.
 	 * @throws SQLException 
 	 */
-	
 	public void reloadTableData() {
+		DefaultTableModel model = null;
+		String keywork ="";
+				try {
+					model = new DefaultTableModel(loadRowData(keywork), loadColumnNames());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		table.setModel(model);
+	}
+	
+	public void searchTableData() {
 		DefaultTableModel model = null;
 		String keyword = tbxSearching.getText();
 		String sortBy = cbxSearchingChoices.getSelectedItem().toString();
@@ -100,25 +111,25 @@ public class Application extends JFrame {
 		getContentPane().setLayout(null);
 		String[] searchingChoices = {"Name", "Salary"};
 		cbxSearchingChoices = new JComboBox(searchingChoices);
-		cbxSearchingChoices.setBounds(16, 23, 118, 24);
+		cbxSearchingChoices.setBounds(26, 23, 118, 24);
 		getContentPane().add(cbxSearchingChoices);
 		
 		tbxSearching = new JTextField();
-		tbxSearching.setBounds(150, 23, 514, 24);
+		tbxSearching.setBounds(178, 23, 438, 24);
 		getContentPane().add(tbxSearching);
 		tbxSearching.setColumns(10);
 		
 		btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				reloadTableData();
+				searchTableData();
 			}
 		});
-		btnSearch.setBounds(680, 23, 117, 25);
+		btnSearch.setBounds(654, 23, 117, 25);
 		getContentPane().add(btnSearch);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(16, 58, 781, 461);
+		scrollPane.setBounds(26, 74, 745, 336);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable(loadRowData(""), loadColumnNames()) {
@@ -139,6 +150,40 @@ public class Application extends JFrame {
 		
 		
 		scrollPane.setViewportView(table);
+		
+		JButton btnAddEmployee = new JButton("ADD EMPLOYEE");
+		btnAddEmployee.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddNewEmployee addNewEmployeeFrame = new AddNewEmployee(new Person(), Define.TYPE_OF_ACTION_CREATE);
+				addNewEmployeeFrame.setSize(500, 510);
+				centreWindow(addNewEmployeeFrame);
+				addNewEmployeeFrame.setVisible(true);
+			}
+		});
+		btnAddEmployee.setBounds(26, 473, 174, 23);
+		getContentPane().add(btnAddEmployee);
+		
+		JButton btnUpdateBasicSalary = new JButton("UPDATE BASIC SALARY");
+		btnUpdateBasicSalary.setBounds(323, 473, 208, 23);
+		getContentPane().add(btnUpdateBasicSalary);
+		
+		JButton btnExit = new JButton("EXIT");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnExit.setBounds(682, 473, 89, 23);
+		getContentPane().add(btnExit);
+		
+		JButton btnReloadTable = new JButton("Reload Table");
+		btnReloadTable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				reloadTableData();
+			}
+		});
+		btnReloadTable.setBounds(656, 421, 115, 23);
+		getContentPane().add(btnReloadTable);
 
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -163,6 +208,11 @@ public class Application extends JFrame {
 		mnFile.add(mntmUpdateBasicSalary);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnFile.add(mntmExit);
 		
 		popup = new JPopupMenu();
@@ -216,6 +266,7 @@ public class Application extends JFrame {
 		
 		popup.add(deleteMenuItem);
 		popup.add(viewMenuItem);
+		
 	}
 	
 	public static void centreWindow(Window frame) {
