@@ -1,5 +1,7 @@
 package vn.edu.vnuk.sep.model;
 
+import vn.edu.vnuk.sep.define.Define;
+
 public class Staff extends Person {
 	private String hometown;
 	private String department;
@@ -8,7 +10,7 @@ public class Staff extends Person {
 	private String position;
 	private int workDay;
 	private int yearOfWork;
-	private float minimumWage;
+	private float minimumWage = Define.newMinimumWage;
 	private long personId;
 	
 	public String getHometown() {
@@ -89,7 +91,7 @@ public class Staff extends Person {
 
 	@Override
 	public float getSalary() {
-		float salary = (salaryRatio * minimumWage) + allowance + (workDay * 30);
+		float salary = (salaryRatio * Define.newMinimumWage) + allowance + (workDay * 30);
 		return salary;
 	}
 

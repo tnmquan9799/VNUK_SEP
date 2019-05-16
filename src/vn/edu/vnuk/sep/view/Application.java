@@ -1,10 +1,27 @@
 package vn.edu.vnuk.sep.view;
 
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import vn.edu.vnuk.sep.controller.Controller;
@@ -18,27 +35,6 @@ import vn.edu.vnuk.sep.model.Lecturer;
 import vn.edu.vnuk.sep.model.Person;
 import vn.edu.vnuk.sep.model.Staff;
 import vn.edu.vnuk.sep.util.CommonUtils;
-
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
-import java.awt.Component;
-import java.awt.Dimension;
-
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import javax.swing.JPopupMenu;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class Application extends JFrame {
@@ -164,6 +160,13 @@ public class Application extends JFrame {
 		getContentPane().add(btnAddEmployee);
 		
 		JButton btnUpdateBasicSalary = new JButton("UPDATE BASIC SALARY");
+		btnUpdateBasicSalary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UpdateBasicSalary updateBasicSalary = new UpdateBasicSalary();
+				centreWindow(updateBasicSalary);
+				updateBasicSalary.setVisible(true);
+			}
+		});
 		btnUpdateBasicSalary.setBounds(323, 473, 208, 23);
 		getContentPane().add(btnUpdateBasicSalary);
 		
@@ -205,6 +208,13 @@ public class Application extends JFrame {
 		mnFile.add(mntmAddNewEmployee);
 		
 		JMenuItem mntmUpdateBasicSalary = new JMenuItem("Update basic salary");
+		mntmUpdateBasicSalary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UpdateBasicSalary updateBasicSalary = new UpdateBasicSalary();
+				centreWindow(updateBasicSalary);
+				updateBasicSalary.setVisible(true);
+			}
+		});
 		mnFile.add(mntmUpdateBasicSalary);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");

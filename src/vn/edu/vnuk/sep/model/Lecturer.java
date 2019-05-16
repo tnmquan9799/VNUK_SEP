@@ -1,5 +1,7 @@
 package vn.edu.vnuk.sep.model;
 
+import vn.edu.vnuk.sep.define.Define;
+
 public class Lecturer extends Person {	
 	private String hometown;
 	private String department;
@@ -8,7 +10,7 @@ public class Lecturer extends Person {
 	private int periodsInMonth;
 	private float salaryRatio;
 	private int yearOfWork;
-	private float minimumWage;
+	private float minimumWage = Define.newMinimumWage;
 	private long personId;
 
 	public String getHometown() {

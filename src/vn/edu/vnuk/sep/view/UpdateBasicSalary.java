@@ -1,20 +1,27 @@
 package vn.edu.vnuk.sep.view;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import vn.edu.vnuk.sep.dao.StaffDao;
+import vn.edu.vnuk.sep.define.Define;
 
 @SuppressWarnings("serial")
 public class UpdateBasicSalary extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textFieldNewBasicSalary;
+	private JFrame frame;
 
 
 	/**
@@ -37,48 +44,35 @@ public class UpdateBasicSalary extends JFrame {
 	 * Create the frame.
 	 */
 	public UpdateBasicSalary() {
+		setTitle("Update Basic Salary");
 		
 		 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 200, 800, 600);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(200, 200, 361, 178);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Add New Employee");
-		btnNewButton.setBounds(0, 0, 147, 150);
-		contentPane.add(btnNewButton);
+		textFieldNewBasicSalary = new JTextField();
+		textFieldNewBasicSalary.setBounds(180, 27, 114, 20);
+		contentPane.add(textFieldNewBasicSalary);
+		textFieldNewBasicSalary.setColumns(10);
 		
-		JButton btnModifyListOf = new JButton("Modify List Employee");
-		btnModifyListOf.setBounds(0, 146, 147, 150);
-		contentPane.add(btnModifyListOf);
+		JLabel lbNewBasicSalary = new JLabel("New Basic Salary:");
+		lbNewBasicSalary.setBounds(39, 27, 114, 20);
+		contentPane.add(lbNewBasicSalary);
 		
-		JButton btnUpdateBasicSalary = new JButton("Update Basic Salary");
-		btnUpdateBasicSalary.setBounds(0, 292, 147, 150);
-		contentPane.add(btnUpdateBasicSalary);
-		
-		JButton btnExit = new JButton("Exit");
-		btnExit.setBounds(0, 439, 147, 150);
-		contentPane.add(btnExit);
-		
-		textField = new JTextField();
-		textField.setBounds(431, 34, 207, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("CURRENT BASIC SALARY:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel.setBounds(200, 27, 187, 40);
-		contentPane.add(lblNewLabel);
-		
-		JButton btnNewButton_1 = new JButton("EDIT");
-		btnNewButton_1.setBounds(424, 532, 131, 40);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnApply = new JButton("APPLY");
-		btnApply.setBounds(632, 532, 131, 40);
-		contentPane.add(btnApply);
+		JButton btnUpdate = new JButton("UPDATE");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Define.newMinimumWage = Float.valueOf(textFieldNewBasicSalary.getText());
+				JOptionPane.showMessageDialog(frame, "UPDATE NEW BASIC SALARY SUCCESSFLLY!");
+
+			}
+		});
+		btnUpdate.setBounds(125, 88, 89, 23);
+		contentPane.add(btnUpdate);
 		
 	}
 }
