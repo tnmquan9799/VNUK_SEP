@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 	
 	public Connection getConnection() {
-		return returnConnection("jdbc:mysql://localhost:3306/employee-management");
+		return returnConnection("jdbc:mysql://localhost/sep");
 	}
 	
 	
