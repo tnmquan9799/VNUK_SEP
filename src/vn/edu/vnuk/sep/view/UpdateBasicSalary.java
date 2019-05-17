@@ -45,7 +45,6 @@ public class UpdateBasicSalary extends JFrame {
 	 */
 	public UpdateBasicSalary() {
 		setTitle("Update Basic Salary");
-		
 		 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(200, 200, 361, 178);
@@ -67,7 +66,7 @@ public class UpdateBasicSalary extends JFrame {
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Define.newMinimumWage = Float.valueOf(textFieldNewBasicSalary.getText());
-				JOptionPane.showMessageDialog(frame, "UPDATE NEW BASIC SALARY SUCCESSFLLY!");
+				JOptionPane.showMessageDialog(frame, "UPDATE NEW BASIC SALARY SUCCESSFULLY!");
 
 			}
 		});

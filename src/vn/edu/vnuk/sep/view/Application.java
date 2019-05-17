@@ -1,6 +1,5 @@
 package vn.edu.vnuk.sep.view;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -67,9 +66,9 @@ public class Application extends JFrame {
 	 */
 	public void reloadTableData() {
 		DefaultTableModel model = null;
-		String keywork ="";
+		String keyword ="";
 				try {
-					model = new DefaultTableModel(loadRowData(keywork), loadColumnNames());
+					model = new DefaultTableModel(loadRowData(keyword), loadColumnNames());
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -96,11 +95,12 @@ public class Application extends JFrame {
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 		}
-		
 		table.setModel(model);
+	
 	}
 	
 	public Application() throws SQLException {
+		setTitle("Homepage");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 583);
@@ -225,6 +225,19 @@ public class Application extends JFrame {
 		});
 		mnFile.add(mntmExit);
 		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmInstructions = new JMenuItem("Instructions");
+		mntmInstructions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Instructions instructions = new Instructions();
+				centreWindow(instructions);
+				instructions.setVisible(true);
+			}
+		});
+		mnHelp.add(mntmInstructions);
+		
 		popup = new JPopupMenu();
 		JMenuItem deleteMenuItem = new JMenuItem("Delete");
 		deleteMenuItem.addActionListener(new ActionListener() {
@@ -343,24 +356,5 @@ public class Application extends JFrame {
 		}
 		
 		return obj;
-	}
-	
-	@SuppressWarnings("unused")
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 }

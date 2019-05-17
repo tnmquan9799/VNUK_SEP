@@ -8,6 +8,8 @@ import vn.edu.vnuk.sep.define.Define;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JComboBox;
 
@@ -101,7 +103,6 @@ public class StaffPanel extends JPanel {
 	}
 	
 
-	@SuppressWarnings("unused")
 	public String getHometown() {
 		return this.tbxHometown.getText();
 	}

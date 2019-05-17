@@ -39,6 +39,7 @@ public class AddNewEmployee extends JFrame {
 	 * Create the panel.
 	 */
 	public AddNewEmployee(Person person, int typeOfAction) {
+		setTitle("Edit/Add new employee");
 		this.typeOfActionStore = typeOfAction;	
 		getContentPane().setLayout(null);
 		frame = this;
@@ -154,7 +155,7 @@ public class AddNewEmployee extends JFrame {
 						
 						try {
 							new LecturerDao().create(lecturer);
-							JOptionPane.showMessageDialog(frame, "ADD LECTURER CUSSESFULLY!");
+							JOptionPane.showMessageDialog(frame, "ADD LECTURER SUCCESSFULLY!");
 						} catch (SQLException e1) {
 							JOptionPane.showMessageDialog(frame, "ADD LECTURER FAIL!");
 							e1.printStackTrace();

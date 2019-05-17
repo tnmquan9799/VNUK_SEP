@@ -29,7 +29,7 @@ public class CommonUtils {
 	public static Object[][] sortByName(Object[][] objects) {
 		Object[] temp;
 		for (int i = 0; i < objects.length; i++) {
-			for (int j = 0; j < objects.length; j++) {
+			for (int j = i + 1; j < objects.length; j++) {
 				if (String.valueOf(objects[i][2]).compareTo(String.valueOf(objects[j][2])) > 0) {
 					temp = objects[i];
 					objects[i] = objects[j];
@@ -44,8 +44,8 @@ public class CommonUtils {
 	public static Object[][] sortBySalary(Object[][] objects) {
 		Object[] temp;
 		for (int i = 0; i < objects.length; i++) {
-			for (int j = 0; j < objects.length; j++) {
-				if (Float.valueOf(String.valueOf(objects[i][3])) < Float.valueOf(String.valueOf(objects[j][3]))) {
+			for (int j = i + 1; j < objects.length; j++) {
+				if (Float.valueOf(String.valueOf(objects[i][3])) > Float.valueOf(String.valueOf(objects[j][3]))) {
 					temp = objects[i];
 					objects[i] = objects[j];
 					objects[j] = temp;
