@@ -91,7 +91,7 @@ public class Lecturer extends Person {
 
 	@Override
 	public float getSalary() {
-		float salary = (salaryRatio * minimumWage) + allowance + (periodsInMonth * 45);
+		float salary = (salaryRatio * Define.newMinimumWage) + allowance + (periodsInMonth * 45);
 		return salary;
 	}
 

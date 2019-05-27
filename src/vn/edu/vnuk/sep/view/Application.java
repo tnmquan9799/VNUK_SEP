@@ -107,7 +107,7 @@ public class Application extends JFrame {
 		getContentPane().setLayout(null);
 		String[] searchingChoices = {"Name", "Salary"};
 		cbxSearchingChoices = new JComboBox(searchingChoices);
-		cbxSearchingChoices.setBounds(26, 23, 118, 24);
+		cbxSearchingChoices.setBounds(26, 23, 118, 24);	
 		getContentPane().add(cbxSearchingChoices);
 		
 		tbxSearching = new JTextField();
