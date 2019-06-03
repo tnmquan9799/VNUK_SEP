@@ -259,27 +259,35 @@ public class Application extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Delete");
-				try {
-					switch(getTypeSelected()) {
-					case Define.TYPE_OF_LECTURER:
-						new LecturerDao().delete(getPersonIDSelected());
-						break;
-					
-					case Define.TYPE_OF_STAFF:
-						new StaffDao().delete(getPersonIDSelected());
-						break;
-					
-					case Define.TYPE_OF_CASUAL_WORKER:
-						new CasualWorkerDao().delete(getPersonIDSelected());
-						break;
-					}
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 				
-				reloadTableData();
+				Component component = (Component) e.getSource();
+		        JFrame frame = (JFrame) SwingUtilities.getRoot(component);
+		        int a=JOptionPane.showConfirmDialog(frame,"Are you sure?");  
+				if(a==JOptionPane.YES_OPTION){  
+					System.out.println("Delete");
+					try {
+						switch(getTypeSelected()) {
+						case Define.TYPE_OF_LECTURER:
+							new LecturerDao().delete(getPersonIDSelected());
+							break;
+						
+						case Define.TYPE_OF_STAFF:
+							new StaffDao().delete(getPersonIDSelected());
+							break;
+						
+						case Define.TYPE_OF_CASUAL_WORKER:
+							new CasualWorkerDao().delete(getPersonIDSelected());
+							break;
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					reloadTableData();
+				 }   
+				
+				
 			}
 		});
 		
