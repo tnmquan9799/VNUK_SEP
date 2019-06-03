@@ -1,5 +1,7 @@
 package vn.edu.vnuk.sep.view;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -17,10 +19,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import vn.edu.vnuk.sep.controller.Controller;
@@ -115,7 +119,7 @@ public class Application extends JFrame {
 		getContentPane().add(tbxSearching);
 		tbxSearching.setColumns(10);
 		
-		btnSearch = new JButton("Search");
+		btnSearch = new JButton("Apply/Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchTableData();
@@ -173,7 +177,17 @@ public class Application extends JFrame {
 		JButton btnExit = new JButton("EXIT");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				//System.exit(0);
+				 //int a=JOptionPane.showConfirmDialog(f,"Are you sure?");  
+				 //if(a==JOptionPane.YES_OPTION){  
+				   //  f.(JFrame.EXIT_ON_CLOSE);  
+				 //}
+				 Component component = (Component) e.getSource();
+			        JFrame frame = (JFrame) SwingUtilities.getRoot(component);
+			      int a=JOptionPane.showConfirmDialog(frame,"Are you sure?");  
+					if(a==JOptionPane.YES_OPTION){  
+						System.exit(0);    
+					 }   
 			}
 		});
 		btnExit.setBounds(682, 473, 89, 23);
