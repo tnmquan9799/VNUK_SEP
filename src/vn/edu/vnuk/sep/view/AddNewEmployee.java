@@ -39,6 +39,9 @@ public class AddNewEmployee extends JFrame {
 	 * Create the panel.
 	 */
 	public AddNewEmployee(Person person, int typeOfAction) {
+		
+		
+		
 		setTitle("Edit/Add new employee");
 		this.typeOfActionStore = typeOfAction;	
 		getContentPane().setLayout(null);
@@ -105,80 +108,105 @@ public class AddNewEmployee extends JFrame {
 		lecturerPanel.setBounds(63, 169, 385, 255);
 		lecturerPanel.setVisible(false);
 		getContentPane().add(lecturerPanel);
-		
+
 		btnAction = new JButton("");
 		btnAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				if (typeOfActionStore == Define.TYPE_OF_ACTION_CREATE) {
 					
 					switch (cbxtypeOfEmployee.getSelectedIndex()) {
 					case Define.TYPE_OF_STAFF: {
-						Staff staff = new Staff();
-						staff.setName(tbxFullname.getText());
-						staff.setType(cbxtypeOfEmployee.getSelectedIndex());
-						staff.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
-						
-						staff.setAllowance(Integer.valueOf(staffPanel.getAllowance()));
-						staff.setDepartment(staffPanel.getDepartment());
-						staff.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
-						staff.setHometown(staffPanel.getHometown());
-						staff.setPosition(staffPanel.getPositionString());
-						staff.setSalaryRatio(Float.valueOf(staffPanel.getSalaryRatio()));
-						staff.setWorkDay(Integer.valueOf(staffPanel.getWorkDay()));
-						staff.setYearOfWork(Integer.valueOf(staffPanel.getYearOfWork()));
-						
-						try {
-							new StaffDao().create(staff);
-							JOptionPane.showMessageDialog(frame, "ADD STAFF SUCCESSFLLY!");
-							
-						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "ADD STAFF FAIL!");
-							e1.printStackTrace();
+						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
 						}
+						else
+						{
+																													
+							Staff staff = new Staff();
+							staff.setName(tbxFullname.getText());
+							staff.setType(cbxtypeOfEmployee.getSelectedIndex());
+							staff.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
+							
+							staff.setAllowance(Integer.valueOf(staffPanel.getAllowance()));
+							staff.setDepartment(staffPanel.getDepartment());
+							staff.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
+							staff.setHometown(staffPanel.getHometown());
+							staff.setPosition(staffPanel.getPositionString());
+							staff.setSalaryRatio(Float.valueOf(staffPanel.getSalaryRatio()));
+							staff.setWorkDay(Integer.valueOf(staffPanel.getWorkDay()));
+							staff.setYearOfWork(Integer.valueOf(staffPanel.getYearOfWork()));
+							
+							
+							
+							try {
+								new StaffDao().create(staff);
+								JOptionPane.showMessageDialog(frame, "ADD STAFF SUCCESSFLLY!");
+								
+							} catch (SQLException e1) {
+								JOptionPane.showMessageDialog(frame, "ADD STAFF FAIL!");
+								e1.printStackTrace();
+							}
+							
+						}
+						
 						break;
 					}
 					
 					case Define.TYPE_OF_LECTURER: {
-						Lecturer lecturer = new Lecturer();
-						lecturer.setName(tbxFullname.getText());
-						lecturer.setType(cbxtypeOfEmployee.getSelectedIndex());
-						lecturer.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
-						
-						lecturer.setAllowance(Integer.valueOf(lecturerPanel.getAllowance()));
-						lecturer.setDepartment(lecturerPanel.getDepartment());
-						lecturer.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
-						lecturer.setHometown(lecturerPanel.getHometown());
-						lecturer.setQualification(lecturerPanel.getQualificationString());
-						lecturer.setSalaryRatio(Float.valueOf(lecturerPanel.getSalaryRatio()));
-						lecturer.setPeriodsInMonth(Integer.valueOf(lecturerPanel.getPeriodsInMonth()));
-						lecturer.setYearOfWork(Integer.valueOf(lecturer.getYearOfWork()));
-						
-						try {
-							new LecturerDao().create(lecturer);
-							JOptionPane.showMessageDialog(frame, "ADD LECTURER SUCCESSFULLY!");
-						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "ADD LECTURER FAIL!");
-							e1.printStackTrace();
+						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						{
+							Lecturer lecturer = new Lecturer();
+							lecturer.setName(tbxFullname.getText());
+							lecturer.setType(cbxtypeOfEmployee.getSelectedIndex());
+							lecturer.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
+							
+							lecturer.setAllowance(Integer.valueOf(lecturerPanel.getAllowance()));
+							lecturer.setDepartment(lecturerPanel.getDepartment());
+							lecturer.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
+							lecturer.setHometown(lecturerPanel.getHometown());
+							lecturer.setQualification(lecturerPanel.getQualificationString());
+							lecturer.setSalaryRatio(Float.valueOf(lecturerPanel.getSalaryRatio()));
+							lecturer.setPeriodsInMonth(Integer.valueOf(lecturerPanel.getPeriodsInMonth()));
+							lecturer.setYearOfWork(Integer.valueOf(lecturer.getYearOfWork()));
+							
+							try {
+								new LecturerDao().create(lecturer);
+								JOptionPane.showMessageDialog(frame, "ADD LECTURER SUCCESSFULLY!");
+							} catch (SQLException e1) {
+								JOptionPane.showMessageDialog(frame, "ADD LECTURER FAIL!");
+								e1.printStackTrace();
+							}
 						}
 						break;
 					}
 					
 					case Define.TYPE_OF_CASUAL_WORKER: {
-						CasualWorker casualWorker = new CasualWorker();
-						casualWorker.setName(tbxFullname.getText());
-						casualWorker.setType(cbxtypeOfEmployee.getSelectedIndex());
-						casualWorker.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
-						
-						casualWorker.setEarningPerDay(Float.valueOf(workerPanel.getEarningPerDay()));
-						casualWorker.setWorkDay(Integer.valueOf(workerPanel.getWorkDay()));
-						
-						try {
-							new CasualWorkerDao().create(casualWorker);
-							JOptionPane.showMessageDialog(frame, "ADD CASUAL WORKER SUCCESSFULLY!");
+						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						{
+							CasualWorker casualWorker = new CasualWorker();
+							casualWorker.setName(tbxFullname.getText());
+							casualWorker.setType(cbxtypeOfEmployee.getSelectedIndex());
+							casualWorker.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
 							
-						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "ADD CASUAL WORKER FAIL!");
-							e1.printStackTrace();
+							casualWorker.setEarningPerDay(Float.valueOf(workerPanel.getEarningPerDay()));
+							casualWorker.setWorkDay(Integer.valueOf(workerPanel.getWorkDay()));
+							
+							try {
+								new CasualWorkerDao().create(casualWorker);
+								JOptionPane.showMessageDialog(frame, "ADD CASUAL WORKER SUCCESSFULLY!");
+								
+							} catch (SQLException e1) {
+								JOptionPane.showMessageDialog(frame, "ADD CASUAL WORKER FAIL!");
+								e1.printStackTrace();
+							}
 						}
 						break;
 					}
@@ -404,4 +432,21 @@ public class AddNewEmployee extends JFrame {
 			break;
 		}
 	}
+	
+	public boolean checkIntNumber(String s){
+		int n;
+	    boolean check = false;
+	    while (!check) {
+	        try {
+	            n = Integer.valueOf(s);
+	            check = true;
+	        } catch (Exception e) {
+	            check = false;
+	            break;
+	        }
+	    }
+	    return check;
+	}
+	
+
 }

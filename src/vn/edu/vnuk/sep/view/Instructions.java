@@ -41,7 +41,7 @@ public class Instructions extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblGuide = new JLabel("ASK ME BITCH");
+		JLabel lblGuide = new JLabel("HELLO");
 		lblGuide.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGuide.setBounds(10, 11, 414, 239);
 		contentPane.add(lblGuide);

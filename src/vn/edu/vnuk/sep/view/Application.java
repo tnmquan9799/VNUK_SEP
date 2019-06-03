@@ -177,11 +177,7 @@ public class Application extends JFrame {
 		JButton btnExit = new JButton("EXIT");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.exit(0);
-				 //int a=JOptionPane.showConfirmDialog(f,"Are you sure?");  
-				 //if(a==JOptionPane.YES_OPTION){  
-				   //  f.(JFrame.EXIT_ON_CLOSE);  
-				 //}
+				
 				 Component component = (Component) e.getSource();
 			        JFrame frame = (JFrame) SwingUtilities.getRoot(component);
 			      int a=JOptionPane.showConfirmDialog(frame,"Are you sure?");  

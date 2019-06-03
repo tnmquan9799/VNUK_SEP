@@ -1,5 +1,6 @@
 package vn.edu.vnuk.sep.view;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import vn.edu.vnuk.sep.define.Define;
@@ -62,9 +64,13 @@ public class UpdateBasicSalary extends JFrame {
 		JButton btnUpdate = new JButton("UPDATE");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Define.newMinimumWage = Float.valueOf(textFieldNewBasicSalary.getText());
-				JOptionPane.showMessageDialog(frame, "UPDATE NEW BASIC SALARY SUCCESSFULLY!");
-
+				Component component = (Component) e.getSource();
+		        JFrame frame = (JFrame) SwingUtilities.getRoot(component);
+		      int a=JOptionPane.showConfirmDialog(frame,"Do you want update Basic Salary?");  
+				if(a==JOptionPane.YES_OPTION){  
+					Define.newMinimumWage = Float.valueOf(textFieldNewBasicSalary.getText());
+					JOptionPane.showMessageDialog(frame, "UPDATE NEW BASIC SALARY SUCCESSFULLY!");   
+				 }   
 			}
 		});
 		btnUpdate.setBounds(125, 88, 89, 23);
