@@ -188,6 +188,7 @@ public class Application extends JFrame {
 					if(a==JOptionPane.YES_OPTION){  
 						System.exit(0);    
 					 }   
+					
 			}
 		});
 		btnExit.setBounds(682, 473, 89, 23);
