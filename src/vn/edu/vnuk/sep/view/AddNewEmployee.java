@@ -118,6 +118,22 @@ public class AddNewEmployee extends JFrame {
 					
 					switch (cbxtypeOfEmployee.getSelectedIndex()) {
 					case Define.TYPE_OF_STAFF: {
+						if (!checkIntNumber(tbxYearOfBirth.getText())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						if (!checkIntNumber(staffPanel.getWorkDay())) {
+							JOptionPane.showMessageDialog(frame, "You should input Work Day by Numbers!");
+						}
+						else
+						if (!checkIntNumber(staffPanel.getYearOfWork())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Work by Numbers!");
+						}
+						else
+						if (!checkFloatNumber(staffPanel.getSalaryRatio())) {
+							JOptionPane.showMessageDialog(frame, "You should input Salary Ratio by Numbers!");
+						}
+						else
 						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
 							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
 						}
@@ -155,6 +171,22 @@ public class AddNewEmployee extends JFrame {
 					}
 					
 					case Define.TYPE_OF_LECTURER: {
+						if (!checkIntNumber(tbxYearOfBirth.getText())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						if (!checkIntNumber(lecturerPanel.getPeriodsInMonth())) {
+							JOptionPane.showMessageDialog(frame, "You should input Periods In Month by Numbers!");
+						}
+						else
+						if (!checkIntNumber(lecturerPanel.getYearOfWork())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Work by Numbers!");
+						}
+						else
+						if (!checkFloatNumber(lecturerPanel.getSalaryRatio())) {
+							JOptionPane.showMessageDialog(frame, "You should input Salary Ratio by Numbers!");
+						}
+						else
 						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
 							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
 						}
@@ -172,7 +204,7 @@ public class AddNewEmployee extends JFrame {
 							lecturer.setQualification(lecturerPanel.getQualificationString());
 							lecturer.setSalaryRatio(Float.valueOf(lecturerPanel.getSalaryRatio()));
 							lecturer.setPeriodsInMonth(Integer.valueOf(lecturerPanel.getPeriodsInMonth()));
-							lecturer.setYearOfWork(Integer.valueOf(lecturer.getYearOfWork()));
+							lecturer.setYearOfWork(Integer.valueOf(lecturerPanel.getYearOfWork()));
 							
 							try {
 								new LecturerDao().create(lecturer);
@@ -186,6 +218,18 @@ public class AddNewEmployee extends JFrame {
 					}
 					
 					case Define.TYPE_OF_CASUAL_WORKER: {
+						if (!checkIntNumber(tbxYearOfBirth.getText())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						if (!checkIntNumber(workerPanel.getWorkDay())) {
+							JOptionPane.showMessageDialog(frame, "You should input Work Day by Numbers!");
+						}
+						
+						else
+						if (!checkFloatNumber(workerPanel.getEarningPerDay())) {
+							JOptionPane.showMessageDialog(frame, "You should input Earning PerDay by Numbers!");
+						}
 						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
 							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
 						}
@@ -216,76 +260,137 @@ public class AddNewEmployee extends JFrame {
 					
 					switch (cbxtypeOfEmployee.getSelectedIndex()) {
 					case Define.TYPE_OF_STAFF: {
-						Staff staff = new Staff();
-						staff.setId(personId);
-						staff.setPersonId(personId);
-						staff.setName(tbxFullname.getText());
-						staff.setType(cbxtypeOfEmployee.getSelectedIndex());
-						staff.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
-						
-						staff.setAllowance(Integer.valueOf(staffPanel.getAllowance()));
-						staff.setDepartment(staffPanel.getDepartment());
-						staff.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
-						staff.setHometown(staffPanel.getHometown());
-						staff.setPosition(staffPanel.getPositionString());
-						staff.setSalaryRatio(Float.valueOf(staffPanel.getSalaryRatio()));
-						staff.setWorkDay(Integer.valueOf(staffPanel.getWorkDay()));
-						staff.setYearOfWork(Integer.valueOf(staffPanel.getYearOfWork()));
-						
-						try {
-							new StaffDao().update(personId, staff);
-							JOptionPane.showMessageDialog(frame, "UPDATE STAFF SUCCESSFULLY!");
-						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "UPDATE STAFF FAIL!");
-							e1.printStackTrace();
+						if (!checkIntNumber(tbxYearOfBirth.getText())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						if (!checkIntNumber(staffPanel.getWorkDay())) {
+							JOptionPane.showMessageDialog(frame, "You should input Work Day by Numbers!");
+						}
+						else
+						if (!checkIntNumber(staffPanel.getYearOfWork())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Work by Numbers!");
+						}
+						else
+						if (!checkFloatNumber(staffPanel.getSalaryRatio())) {
+							JOptionPane.showMessageDialog(frame, "You should input Salary Ratio by Numbers!");
+						}
+						else
+						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+							{
+							Staff staff = new Staff();
+							staff.setId(personId);
+							staff.setPersonId(personId);
+							staff.setName(tbxFullname.getText());
+							staff.setType(cbxtypeOfEmployee.getSelectedIndex());
+							staff.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
+							
+							staff.setAllowance(Integer.valueOf(staffPanel.getAllowance()));
+							staff.setDepartment(staffPanel.getDepartment());
+							staff.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
+							staff.setHometown(staffPanel.getHometown());
+							staff.setPosition(staffPanel.getPositionString());
+							staff.setSalaryRatio(Float.valueOf(staffPanel.getSalaryRatio()));
+							staff.setWorkDay(Integer.valueOf(staffPanel.getWorkDay()));
+							staff.setYearOfWork(Integer.valueOf(staffPanel.getYearOfWork()));
+							
+							try {
+								new StaffDao().update(personId, staff);
+								JOptionPane.showMessageDialog(frame, "UPDATE STAFF SUCCESSFULLY!");
+							} catch (SQLException e1) {
+								JOptionPane.showMessageDialog(frame, "UPDATE STAFF FAIL!");
+								e1.printStackTrace();
+							}
 						}
 						break;
 					}
 					
 					case Define.TYPE_OF_LECTURER: {
-						Lecturer lecturer = new Lecturer();
-						lecturer.setId(personId);
-						lecturer.setPersonId(personId);
-						lecturer.setName(tbxFullname.getText());
-						lecturer.setType(cbxtypeOfEmployee.getSelectedIndex());
-						lecturer.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
-						
-						lecturer.setAllowance(Integer.valueOf(lecturerPanel.getAllowance()));
-						lecturer.setDepartment(lecturerPanel.getDepartment());
-						lecturer.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
-						lecturer.setHometown(lecturerPanel.getHometown());
-						lecturer.setQualification(lecturerPanel.getQualificationString());
-						lecturer.setSalaryRatio(Float.valueOf(lecturerPanel.getSalaryRatio()));
-						lecturer.setPeriodsInMonth(Integer.valueOf(lecturerPanel.getPeriodsInMonth()));
-						lecturer.setYearOfWork(Integer.valueOf(lecturer.getYearOfWork()));
-						
-						try {
-							new LecturerDao().update(personId, lecturer);
-							JOptionPane.showMessageDialog(frame, "UPDATE LECTURER SUCCESSFULLY!");
-						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "UPDATE LECTURER FAIL!");
-							e1.printStackTrace();
+						if (!checkIntNumber(tbxYearOfBirth.getText())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						if (!checkIntNumber(lecturerPanel.getPeriodsInMonth())) {
+							JOptionPane.showMessageDialog(frame, "You should input Periods In Month by Numbers!");
+						}
+						else
+						if (!checkIntNumber(lecturerPanel.getYearOfWork())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Work by Numbers!");
+						}
+						else
+						if (!checkFloatNumber(lecturerPanel.getSalaryRatio())) {
+							JOptionPane.showMessageDialog(frame, "You should input Salary Ratio by Numbers!");
+						}
+						else
+						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						{
+							Lecturer lecturer = new Lecturer();
+							lecturer.setId(personId);
+							lecturer.setPersonId(personId);
+							lecturer.setName(tbxFullname.getText());
+							lecturer.setType(cbxtypeOfEmployee.getSelectedIndex());
+							lecturer.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
+							
+							lecturer.setAllowance(Integer.valueOf(lecturerPanel.getAllowance()));
+							lecturer.setDepartment(lecturerPanel.getDepartment());
+							lecturer.setMinimumWage(Define.DEFAULT_MINIMUM_WAGE);
+							lecturer.setHometown(lecturerPanel.getHometown());
+							lecturer.setQualification(lecturerPanel.getQualificationString());
+							lecturer.setSalaryRatio(Float.valueOf(lecturerPanel.getSalaryRatio()));
+							lecturer.setPeriodsInMonth(Integer.valueOf(lecturerPanel.getPeriodsInMonth()));
+							lecturer.setYearOfWork(Integer.valueOf(lecturer.getYearOfWork()));
+							
+							try {
+								new LecturerDao().update(personId, lecturer);
+								JOptionPane.showMessageDialog(frame, "UPDATE LECTURER SUCCESSFULLY!");
+							} catch (SQLException e1) {
+								JOptionPane.showMessageDialog(frame, "UPDATE LECTURER FAIL!");
+								e1.printStackTrace();
+							}
 						}
 						break;
 					}
 					
 					case Define.TYPE_OF_CASUAL_WORKER: {
-						CasualWorker casualWorker = new CasualWorker();
-						casualWorker.setId(personId);
-						casualWorker.setPersonId(personId);
-						casualWorker.setName(tbxFullname.getText());
-						casualWorker.setType(cbxtypeOfEmployee.getSelectedIndex());
-						casualWorker.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
+						if (!checkIntNumber(tbxYearOfBirth.getText())) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else
+						if (!checkIntNumber(workerPanel.getWorkDay())) {
+							JOptionPane.showMessageDialog(frame, "You should input Work Day by Numbers!");
+						}
 						
-						casualWorker.setEarningPerDay(Float.valueOf(workerPanel.getEarningPerDay()));
-						casualWorker.setWorkDay(Integer.valueOf(workerPanel.getWorkDay()));
-						
-						try {
-							new CasualWorkerDao().update(personId, casualWorker);
-							JOptionPane.showMessageDialog(frame, "UPDATE CASUAL WORKER SUCCESSFULLY!");
-						} catch (SQLException e1) {
-							JOptionPane.showMessageDialog(frame, "UPDATE CASUAL WORKER FAIL");
-							e1.printStackTrace();
+						else
+						if (!checkFloatNumber(workerPanel.getEarningPerDay())) {
+							JOptionPane.showMessageDialog(frame, "You should input Earning PerDay by Numbers!");
+						}
+						if (Integer.valueOf(tbxYearOfBirth.getText())<1000 || Integer.valueOf(tbxYearOfBirth.getText()) > 9999 ) {
+							JOptionPane.showMessageDialog(frame, "You should input Year Of Birth by 4 Numbers!");
+						}
+						else {
+							CasualWorker casualWorker = new CasualWorker();
+							casualWorker.setId(personId);
+							casualWorker.setPersonId(personId);
+							casualWorker.setName(tbxFullname.getText());
+							casualWorker.setType(cbxtypeOfEmployee.getSelectedIndex());
+							casualWorker.setYearOfBirth(Integer.valueOf(tbxYearOfBirth.getText()));
+							
+							casualWorker.setEarningPerDay(Float.valueOf(workerPanel.getEarningPerDay()));
+							casualWorker.setWorkDay(Integer.valueOf(workerPanel.getWorkDay()));
+							
+							try {
+								new CasualWorkerDao().update(personId, casualWorker);
+								JOptionPane.showMessageDialog(frame, "UPDATE CASUAL WORKER SUCCESSFULLY!");
+							} catch (SQLException e1) {
+								JOptionPane.showMessageDialog(frame, "UPDATE CASUAL WORKER FAIL");
+								e1.printStackTrace();
+							}
 						}
 						break;
 					}
@@ -439,6 +544,21 @@ public class AddNewEmployee extends JFrame {
 	    while (!check) {
 	        try {
 	            n = Integer.valueOf(s);
+	            check = true;
+	        } catch (Exception e) {
+	            check = false;
+	            break;
+	        }
+	    }
+	    return check;
+	}
+	
+	public boolean checkFloatNumber(String s){
+		float n;
+	    boolean check = false;
+	    while (!check) {
+	        try {
+	            n = Float.valueOf(s);
 	            check = true;
 	        } catch (Exception e) {
 	            check = false;

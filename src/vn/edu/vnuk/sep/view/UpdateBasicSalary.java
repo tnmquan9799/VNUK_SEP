@@ -64,17 +64,37 @@ public class UpdateBasicSalary extends JFrame {
 		JButton btnUpdate = new JButton("UPDATE");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Component component = (Component) e.getSource();
-		        JFrame frame = (JFrame) SwingUtilities.getRoot(component);
-		      int a=JOptionPane.showConfirmDialog(frame,"Do you want update Basic Salary?");  
-				if(a==JOptionPane.YES_OPTION){  
-					Define.newMinimumWage = Float.valueOf(textFieldNewBasicSalary.getText());
-					JOptionPane.showMessageDialog(frame, "UPDATE NEW BASIC SALARY SUCCESSFULLY!");   
-				 }   
-			}
+				if (!checkFloatNumber(textFieldNewBasicSalary.getText())) {
+					JOptionPane.showMessageDialog(frame, "You should input Basic Salary by Numbers!");
+				}
+				else {
+					Component component = (Component) e.getSource();
+			        JFrame frame = (JFrame) SwingUtilities.getRoot(component);
+			        int a=JOptionPane.showConfirmDialog(frame,"Do you want update Basic Salary?");  
+					if(a==JOptionPane.YES_OPTION){  
+						Define.newMinimumWage = Float.valueOf(textFieldNewBasicSalary.getText());
+						JOptionPane.showMessageDialog(frame, "UPDATE NEW BASIC SALARY SUCCESSFULLY!");   
+					 }   
+					}
+				}
 		});
 		btnUpdate.setBounds(125, 88, 89, 23);
 		contentPane.add(btnUpdate);
 		
+	}
+	
+	public boolean checkFloatNumber(String s){
+		float n;
+	    boolean check = false;
+	    while (!check) {
+	        try {
+	            n = Float.valueOf(s);
+	            check = true;
+	        } catch (Exception e) {
+	            check = false;
+	            break;
+	        }
+	    }
+	    return check;
 	}
 }
